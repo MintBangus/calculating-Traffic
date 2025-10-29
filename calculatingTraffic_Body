@@ -1,0 +1,119 @@
+#include <iostream>
+
+short northIn{};
+short westIn{};
+short eastIn{};
+short southIn{};
+short northOut{};
+short westOut{};
+short eastOut{};
+short southOut{};
+short nonZero{ 0 };
+short twoDivise{ 2 };
+
+void disPlayin()
+{
+    std::cout << "  " << northIn << " " << northOut << '\n';
+    std::cout << westOut << "     " << eastIn << '\n';
+    std::cout << westIn << "     " << eastOut << '\n';
+    std::cout << "  " << southOut << " " << southIn << '\n';
+}
+
+void organIce()
+{
+    if((northIn > westIn) && (northIn > eastIn) && (northIn > southIn))
+    {
+        if(northIn%twoDivise)
+        {
+            //odd
+            westOut += northIn;
+        } else {
+            //even
+            southOut += northIn;
+        }
+
+        northIn = nonZero;
+
+        disPlayin();
+
+    }
+    if((westIn > northIn) && (westIn > eastIn) && (westIn > southIn))
+    {
+        if(westIn%twoDivise)
+        {
+            //odd
+            southOut += westIn;
+        } else {
+            //even
+            eastOut += westIn;
+        }
+
+        westIn = nonZero;
+
+        disPlayin();
+    }
+    if((eastIn > northIn) && (eastIn > westIn) && (eastIn > southIn))
+    {
+        if(eastIn%twoDivise)
+        {
+            //odd
+            northOut += eastIn;
+        } else {
+            //even
+            westOut += eastIn;
+        }
+
+        eastIn = nonZero;
+
+        disPlayin();
+    }
+    if((southIn > northIn) && (southIn > westIn) && (southIn > eastIn))
+    {
+        if(southIn%twoDivise)
+        {
+            //odd
+            eastOut += southIn;
+        } else {
+            //even
+            northOut += southIn;
+        }
+
+        southIn = nonZero;
+
+        disPlayin();
+    }
+}
+
+int main()
+{
+    //take north cars  INPUT(5 0)
+
+    //take west cars   INPUT(4 0)
+
+    //take east cars   INPUT(7 0)
+
+    //take south cars  INPUT(2 0)
+
+
+    std::cin >> northIn;
+    std::cin >> northOut;
+    std::cin >> westIn;
+    std::cin >> westOut;
+    std::cin >> eastIn;
+    std::cin >> eastOut;
+    std::cin >> southIn;
+    std::cin >> southOut;
+
+    std::cout << "  " << northIn << " " << northOut << '\n';
+    std::cout << westOut << "     " << eastIn << '\n';
+    std::cout << westIn << "     " << eastOut << '\n';
+    std::cout << "  " << southOut << " " << southIn << '\n';
+
+    organIce();
+    organIce();
+    organIce();
+    organIce();
+
+    std::cout << "Phew! Let's take a break for donut time.";
+
+}
